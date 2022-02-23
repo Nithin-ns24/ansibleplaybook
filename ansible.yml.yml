@@ -1,0 +1,38 @@
+#!/bin/bash
+
+
+echo 'Installing Apache web server'
+
+apt install apache2 -y
+
+echo 'Apache web server is installed'
+
+echo 'Installing maria DB'
+
+apt install mariadb-server -y
+
+echo 'Maria DB Installed'
+
+apt install php php-pear php-fdm php-dev php-zip php-curl php-xmlrpc php-gd php-mysql php-mbstring php-xml libapache2-mod-php -y
+
+echo 'php and its modules are installed'
+
+echo 'starting the services'
+
+systemctl restart apache2
+systemctl restart mariadb
+systemctl restart php
+
+echo 'Enabling the services'
+
+systemctl enable apache2
+systemctl enable mariadb
+systemctl enable php
+
+
+echo 'Checking the status of the services'
+
+echo Apache service is $(systemctl show -p Activestate --value apache2)
+echo Maria DB service is $(systemctl show -p Activestate --value mariadb)
+echo php service is $(systemctl show -p Activestate --value php)
+
