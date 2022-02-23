@@ -1,2 +1,2 @@
 [web server]
-127.0.0.1 ansible_userec2=user
+10.0.1.169 ansible_userec2=user
